@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
-public class AddressGeneratorTests {
+public class AddressGeneratorTest {
     AddressGenerator generator;
 
     @Before

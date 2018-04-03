@@ -1,5 +1,6 @@
 package io.photochain;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -52,5 +53,12 @@ public class EntryParserTest {
 
         List<Entry> entries = parser.parse(new ByteArrayInputStream(input.getBytes()));
         assertThat(entries, is(expected));
+    }
+
+    @Test(expected = JsonParseException.class)
+    public void testParseIncorrectJson() throws IOException {
+        String input = "{\"address\":0xb87F175f978Cd5Ff6470Ecca16b7a8C01b41F23c\",\"privKey\":\"d18d71a865b22f33ef95203ad28098daf286a645bbd8d81ac715d3186d0b78b9\"}";
+
+        parser.parse(new ByteArrayInputStream(input.getBytes()));
     }
 }
